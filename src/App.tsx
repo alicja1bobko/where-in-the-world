@@ -1,16 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-
+import "./App.css";
+import { DarkModeProvider } from "./providers/DarkModeProvider";
+import MainApp from "./components/MainApp";
 
 function App() {
-
-
   return (
-    <div className="App">
-hello
-    </div>
+    <DarkModeProvider>
+      <MainApp />
+    </DarkModeProvider>
   );
 }
 
-export default App
+export default App;
