@@ -1,5 +1,8 @@
 import React, { Context, createContext, useReducer, useEffect } from "react";
 
+export interface Theme {
+  isDark: boolean;
+}
 export const LIGHT_THEME: Theme = {
   isDark: false,
 };
@@ -7,10 +10,6 @@ export const LIGHT_THEME: Theme = {
 export const DARK_THEME: Theme = {
   isDark: true,
 };
-
-export interface Theme {
-  isDark: boolean;
-}
 
 interface DarkModeContext {
   mode: Theme;
