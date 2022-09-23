@@ -34,8 +34,14 @@ const DarkModeProvider: React.FC<Props> = ({ children }) => {
   const [mode, dispatch] = useReducer(darkModeReducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem("DarkMode", JSON.stringify(mode));
-  }, [mode]);
+    localStorage.setItem("DarkMode", JSON.stringify(mode.isDark));
+    if (localStorage.getItem("DarkMode") === "true") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }),
+    [mode];
 
   return (
     <DarkModeContext.Provider

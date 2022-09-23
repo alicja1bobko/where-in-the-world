@@ -14,9 +14,7 @@ const Header = () => {
   const { isDark } = theme.mode;
   return (
     <header
-      className={`${
-        isDark ? "theme-dark" : "theme-light"
-      } z-10 shadow-md p-8 transition-all items-center duration-500`}
+      className={"z-10 shadow-md p-8 transition-colors items-center sticky"}
     >
       <h1 className="text-xl sm:text-2xl xl:text-[24px] tracking-[1px] font-extrabold w-[8rem] sm:w-auto">
         Where in the World?
