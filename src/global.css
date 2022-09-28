@@ -35,6 +35,13 @@ body{
     min-height: 100vh;
 }
 
+input{
+    background-color: var(--elements);
+}
+select{
+    background-color: var(--elements);
+}
+
 .content {
   display: flex;
   justify-content: center;
