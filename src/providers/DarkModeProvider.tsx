@@ -24,7 +24,7 @@ const DarkModeContext: Context<DarkModeContext> = createContext(
 );
 
 const initialState =
-  JSON.parse(localStorage.getItem("DarkMode") as string) || LIGHT_THEME;
+  localStorage.getItem("DarkMode") === "true" ? DARK_THEME : LIGHT_THEME;
 
 interface Props {
   children: React.ReactNode;

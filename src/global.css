@@ -26,7 +26,6 @@ header{
   color: var(--text);
   display: flex;
   justify-content: space-between;
-
 }
 
 body{
@@ -42,7 +41,12 @@ body{
   width: 100%;
 }
 
-:focus-visible {
+:focus {
   outline: 3px dashed rgb(81, 190, 236);
   outline-offset: 4px;
 }
+
+.hide-focus :focus {
+  outline:none;
+}
+
