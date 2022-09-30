@@ -51,9 +51,12 @@ const MainApp = (props: any) => {
   }, []);
 
   return (
-    <div>
+    <div className="grid grid-rows-[auto_auto_1fr]">
       <Header />
-      <Form />
+      <Form
+        allCountries={allCountries}
+        setFilteredCountries={setFilteredCountries}
+      />
       <main>
         {loading ? (
           <p>Loading...</p>

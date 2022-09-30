@@ -7,11 +7,12 @@ interface Countries {
 }
 
 const Countries: React.FC<Countries> = ({ countries, pages }) => {
+
   useEffect(() => {
     document
       .querySelectorAll(".card")
       .forEach((card) => observer.observe(card));
-  }, [pages]);
+  }, [pages, countries]);
 
   let observer = new IntersectionObserver(
     (cards) => {
@@ -25,7 +26,7 @@ const Countries: React.FC<Countries> = ({ countries, pages }) => {
   const cards = countries.slice(0, pages).map((country, index) => (
     <div
       tabIndex={0}
-      className=" card grid rounded-md shadow-md max-w-sm mx-auto w-full max-h-[25rem] overflow-hidden cursor-pointer transition hover:!scale-105 scale-75 opacity-40 transition-all"
+      className=" card grid rounded-md shadow-md max-w-sm mx-auto w-full max-h-[25rem] overflow-hidden cursor-pointer transition hover:!scale-105 hover:shadow-xl scale-75 opacity-40 transition-all"
       key={country.name.common + index}
     >
       <img
@@ -33,7 +34,7 @@ const Countries: React.FC<Countries> = ({ countries, pages }) => {
         src={country.flags.svg}
         alt=""
       />
-      <article className="p-6">
+      <article className="p-6 lg:py-7">
         <h2 className="text-xl font-extrabold mb-2">{country.name.common}</h2>
         <ul>
           <li>
@@ -52,7 +53,7 @@ const Countries: React.FC<Countries> = ({ countries, pages }) => {
 
   return (
     <>
-      <div className="cards grid gap-14 sm:px-16 ">{cards}</div>
+      <div className="cards grid gap-14 px-[2rem] md:px-[4rem] ">{cards}</div>
     </>
   );
 };
