@@ -3,11 +3,13 @@ import Header from "./Header";
 import Form from "./Form";
 import Countries from "./Countries";
 import axios from "axios";
-import { Country, World } from "../templates/country";
+import { Country } from "../templates/country";
 
 const countriesDefaultState: Country[] = [];
 
 const MainApp = (props: any) => {
+  const PAGES = 24;
+  const [pages, setPages] = useState(PAGES);
   const [allCountries, setAllCountries] = useState(countriesDefaultState);
   const [filteredCountries, setFilteredCountries] = useState(
     countriesDefaultState
@@ -29,6 +31,16 @@ const MainApp = (props: any) => {
 
   useEffect(() => {
     fetchCountries("https://restcountries.com/v3.1/all");
+    // detect bottom of page
+    window.onscroll = function (e) {
+      if (
+        window.innerHeight + window.pageYOffset >=
+        document.body.offsetHeight
+      ) {
+        setPages((prevPagesState) => prevPagesState + PAGES);
+      }
+    };
+
     // Show outline only on key down
     document.body.addEventListener("mousedown", () =>
       document.body.classList.add("hide-focus")
@@ -46,7 +58,7 @@ const MainApp = (props: any) => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <Countries countries={filteredCountries} />
+          <Countries countries={filteredCountries} pages={pages} />
         )}
       </main>
     </div>

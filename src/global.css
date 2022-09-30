@@ -88,3 +88,9 @@ select {
 .hide-focus :focus {
   outline: none;
 }
+
+.show{
+  --tw-scale-x: 1;
+  --tw-scale-y: 1 ;
+    opacity: 1;
+}

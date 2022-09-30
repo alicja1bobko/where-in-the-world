@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Country, World } from "../templates/country";
 
-const Countries: React.FC<World> = ({ countries }) => {
-  const cards = countries.map((country, index) => (
+interface Countries {
+  countries: Country[];
+  pages: number;
+}
+
+const Countries: React.FC<Countries> = ({ countries, pages }) => {
+  useEffect(() => {
+    document
+      .querySelectorAll(".card")
+      .forEach((card) => observer.observe(card));
+  }, [pages]);
+
+  let observer = new IntersectionObserver(
+    (cards) => {
+      cards.forEach((card) => {
+        if (card.isIntersecting) card.target.classList.add("show");
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  const cards = countries.slice(0, pages).map((country, index) => (
     <div
       tabIndex={0}
-      className=" card grid rounded-md shadow-md max-w-sm mx-auto w-full max-h-[25rem] overflow-hidden cursor-pointer transition hover:!scale-105 appear transition-all"
+      className=" card grid rounded-md shadow-md max-w-sm mx-auto w-full max-h-[25rem] overflow-hidden cursor-pointer transition hover:!scale-105 scale-75 opacity-40 transition-all"
       key={country.name.common + index}
     >
       <img
@@ -29,8 +49,6 @@ const Countries: React.FC<World> = ({ countries }) => {
       </article>
     </div>
   ));
-
-  console.log(cards);
 
   return (
     <>
