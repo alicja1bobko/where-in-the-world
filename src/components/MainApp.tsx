@@ -4,6 +4,9 @@ import Form from "./Form";
 import Countries from "./Countries";
 import axios from "axios";
 import { Country } from "../templates/country";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Details from "./Details";
 
 const countriesDefaultState: Country[] = [];
 
@@ -52,18 +55,25 @@ const MainApp = (props: any) => {
 
   return (
     <div className="grid grid-rows-[auto_auto_1fr]">
-      <Header />
-      <Form
-        allCountries={allCountries}
-        setFilteredCountries={setFilteredCountries}
-      />
-      <main>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <Countries countries={filteredCountries} pages={pages} />
-        )}
-      </main>
+      <BrowserRouter>
+        <Header />
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  countries={filteredCountries}
+                  pages={pages}
+                  allCountries={allCountries}
+                  setFilteredCountries={setFilteredCountries}
+                />
+              }
+            />
+            <Route path="/:country" element={<Details />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
     </div>
   );
 };

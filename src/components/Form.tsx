@@ -1,11 +1,8 @@
 import { Country } from "../templates/country";
 import { useEffect, useRef, useState } from "react";
-interface Form {
-  allCountries: Country[];
-  setFilteredCountries: React.Dispatch<React.SetStateAction<Country[]>>;
-}
+import { FormProps } from "./Home";
 
-const Form: React.FC<Form> = ({ allCountries, setFilteredCountries }) => {
+const Form: React.FC<FormProps> = ({ allCountries, setFilteredCountries }) => {
   const searchInput = useRef<HTMLInputElement>(null);
   const [searchState, setSearchState] = useState({
     region: "all",
@@ -35,7 +32,6 @@ const Form: React.FC<Form> = ({ allCountries, setFilteredCountries }) => {
       })
     );
   }, [searchState.name, searchState.region]);
-
 
   return (
     <>
