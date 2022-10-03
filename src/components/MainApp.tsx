@@ -70,7 +70,10 @@ const MainApp = (props: any) => {
                 />
               }
             />
-            <Route path="/:country" element={<Details />} />
+            <Route
+              path="/:countryDetails"
+              element={<Details countries={allCountries} />}
+            />
           </Routes>
         </main>
       </BrowserRouter>

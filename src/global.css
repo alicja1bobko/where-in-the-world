@@ -94,3 +94,7 @@ select {
   --tw-scale-y: 1 ;
     opacity: 1;
 }
+
+.btn-back{
+  background-color: var(--elements);
+}

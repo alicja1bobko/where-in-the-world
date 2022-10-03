@@ -1,18 +1,18 @@
 export type Country = {
-  name: { common: string };
-  nativeName: string;
+  name: {
+    common: string;
+    nativeName: { [key: string]: { official: string; common: string } };
+  };
+
   subregion: string;
-  topLevelDomain: string[];
   region: string;
   population: number;
   capital: string[] | undefined;
-  alpha3Code: string;
-  currencies: {
-    name: string;
-  }[];
+  cca3: string;
+  currencies: { [key: string]: { name: string; symbol: string } };
   languages: {
-    name: string;
-  }[];
+    [key: string]: string;
+  };
   flags: {
     svg: string;
   };

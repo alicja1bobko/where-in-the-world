@@ -3,6 +3,7 @@ import { DarkModeContext } from "../providers/DarkModeProvider";
 import { Icon } from "react-icons-kit";
 import { sun } from "react-icons-kit/icomoon/sun";
 import { moonO } from "react-icons-kit/fa/moonO";
+import { Link } from "react-router-dom";
 
 const setTheme = (darkMode: DarkModeContext) => {
   const isDark = darkMode.mode.isDark;
@@ -18,9 +19,11 @@ const Header = () => {
         "z-10 shadow-md p-8 px-[2rem] md:px-[4rem] transition-colors items-center sticky"
       }
     >
-      <h1 className="text-xl sm:text-2xl xl:text-[24px] tracking-[1px] font-extrabold w-[8rem] sm:w-auto">
-        Where in the World?
-      </h1>
+      <Link to={`/`}>
+        <h1 className="text-xl sm:text-2xl xl:text-[24px] tracking-[1px] font-extrabold w-[8rem] sm:w-auto">
+          Where in the World?
+        </h1>
+      </Link>
       <button
         className="flex gap-2 items-center"
         onClick={() => setTheme(theme)}
