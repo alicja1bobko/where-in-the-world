@@ -7,44 +7,35 @@ interface Form {
 
 const Form: React.FC<Form> = ({ allCountries, setFilteredCountries }) => {
   const searchInput = useRef<HTMLInputElement>(null);
-  const [countriesFormSearchState, setCountriesFormSearchState] =
-    useState<Country[]>(allCountries);
-
-  useEffect(() => {
-    setCountriesFormSearchState(allCountries);
-  }, [allCountries]);
+  const [searchState, setSearchState] = useState({
+    region: "all",
+    name: "",
+  });
 
   const handleSearch = () => {
     const inputValue = searchInput?.current?.value
       .trim()
       .toLocaleLowerCase() as string;
-
-    const filtered = countriesFormSearchState.filter((country) => {
-      return country.name.common.toLocaleLowerCase().startsWith(inputValue);
-    });
-    // setCountriesFormSearchState(filtered);
-    setFilteredCountries(filtered);
+    setSearchState((prevState) => ({ ...prevState, name: inputValue }));
   };
 
   const filterByRegion = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value === "all") {
-      setCountriesFormSearchState(allCountries);
-      setFilteredCountries(allCountries);
-      return;
-    } else if (searchInput?.current?.value.trim()) {
-      const filtered = countriesFormSearchState.filter(
-        (country) => country.region.toLocaleLowerCase() === e.target.value
-      );
-      setCountriesFormSearchState(filtered);
-      setFilteredCountries(filtered);
-    } else {
-      const filtered = allCountries.filter(
-        (country) => country.region.toLocaleLowerCase() === e.target.value
-      );
-      setCountriesFormSearchState(filtered);
-      setFilteredCountries(filtered);
-    }
+    setSearchState((prevState) => ({ ...prevState, region: e.target.value }));
   };
+
+  useEffect(() => {
+    setFilteredCountries(
+      allCountries.filter((country) => {
+        return searchState.region == "all"
+          ? country.name.common.toLocaleLowerCase().startsWith(searchState.name)
+          : country.region.toLocaleLowerCase() === searchState.region &&
+              country.name.common
+                .toLocaleLowerCase()
+                .startsWith(searchState.name);
+      })
+    );
+  }, [searchState.name, searchState.region]);
+
 
   return (
     <>
