@@ -1,7 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
 import Header from "./Header";
-import Form from "./Form";
-import Countries from "./Countries";
 import axios from "axios";
 import { Country } from "../templates/country";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -63,10 +61,12 @@ const MainApp = (): ReactNode => {
               path="/"
               element={
                 <Home
+                  loading={loading}
                   countries={filteredCountries}
                   pages={pages}
                   allCountries={allCountries}
                   setFilteredCountries={setFilteredCountries}
+                  loadingError={loadingError}
                 />
               }
             />

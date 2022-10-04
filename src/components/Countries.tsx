@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import { CountriesProps } from "./Home";
 import { Link } from "react-router-dom";
+import { setTitle } from "../helpers/setTitle";
 
 const Countries: React.FC<CountriesProps> = ({ countries, pages }) => {
+  //document title change
+  setTitle(
+    "Home | Where in the World?",
+    "https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/globe-icon.png"
+  );
+
   useEffect(() => {
     document
       .querySelectorAll(".card")
@@ -16,9 +23,6 @@ const Countries: React.FC<CountriesProps> = ({ countries, pages }) => {
       });
     },
     { threshold: 0.2 }
-  );
-  console.log(
-    countries.filter((country) => country.name.common === "Antarctica")
   );
 
   const cards = countries.slice(0, pages).map((country, index) => (

@@ -17,6 +17,7 @@ export type Country = {
   };
   flags: {
     svg: string;
+    png: string;
   };
 };
 

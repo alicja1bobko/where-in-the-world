@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { longArrowLeft } from "react-icons-kit/fa/longArrowLeft";
 import { Icon } from "react-icons-kit";
 import { ReactNode } from "react";
+import { setTitle } from "../helpers/setTitle";
 
 const Details = ({ countries }: World): JSX.Element => {
   //filter country from DB
@@ -11,6 +12,8 @@ const Details = ({ countries }: World): JSX.Element => {
   const country = countries.filter(
     (country) => country.name.common === countryDetails
   )[0];
+
+  setTitle(country.name.common, country.flags.png);
 
   //currencies helper function
   const currencies: Array<string> = [];
@@ -43,7 +46,7 @@ const Details = ({ countries }: World): JSX.Element => {
     <>
       <article className="grid gap-[5rem] pt-[5rem] px-[2rem] md:px-[4rem]s mx-auto mb-[4rem] max-w-[90rem]">
         <Link to={`/`}>
-          <button className="btn-navigate px-8 py-2 rounded-sm shadow-xl font-semibold">
+          <button className="btn-navigate px-8 py-2 rounded-sm shadow-md font-semibold">
             <div className="grid grid-cols-2 gap-2 text-lg">
               <Icon icon={longArrowLeft} size={25} />
               <p>Back</p>
@@ -57,7 +60,7 @@ const Details = ({ countries }: World): JSX.Element => {
             alt={`${country.name.common} flag`}
           />
           <section className="lg:py-6 px-2">
-            <h1 className="md:text-5xl text-3xl font-extrabold mt-[3rem] mb-[1rem] md:mt-[1rem]">
+            <h1 className="md:text-5xl text-3xl font-extrabold mt-[3rem] mb-[1rem] md:mt-[0rem]">
               {country.name.common}
             </h1>
             <div className="grid md:grid-cols-1 md:gap-[0rem] lg:grid-cols-2 lg:gap-[8rem] xl:gap-[10rem] text-lg ">
@@ -72,7 +75,9 @@ const Details = ({ countries }: World): JSX.Element => {
                 </li>
                 <li>
                   <b>Population: </b>
-                  {new Intl.NumberFormat("en-IN").format(country.population)}
+                  {new Intl.NumberFormat("de-DE", { useGrouping: true }).format(
+                    country.population
+                  )}
                 </li>
                 <li>
                   <b>Region:</b> {country.region}
@@ -103,7 +108,7 @@ const Details = ({ countries }: World): JSX.Element => {
                 ? borders.map((border) => {
                     return (
                       <Link to={`/${border}`} key={border}>
-                        <button className="btn-navigate px-4 py-2 rounded-sm shadow-xl mr-3 mb-3 text-base">
+                        <button className="btn-navigate px-4 py-2 rounded-sm shadow-md mr-3 mb-3 text-base">
                           {border}
                         </button>
                       </Link>

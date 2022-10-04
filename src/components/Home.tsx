@@ -2,6 +2,7 @@ import React from "react";
 import { Country } from "../templates/country";
 import Countries from "./Countries";
 import Form from "./Form";
+import Loading from "./Loading";
 
 export type FormProps = {
   allCountries: Country[];
@@ -12,13 +13,20 @@ export type CountriesProps = {
   pages: number;
 };
 
-type Home = FormProps & CountriesProps;
+type loading = {
+  loading: boolean;
+  loadingError: boolean;
+};
+
+type Home = FormProps & CountriesProps & loading;
 
 const Home: React.FC<Home> = ({
   allCountries,
   setFilteredCountries,
   countries,
   pages,
+  loading,
+  loadingError,
 }) => {
   return (
     <>
@@ -26,7 +34,15 @@ const Home: React.FC<Home> = ({
         allCountries={allCountries}
         setFilteredCountries={setFilteredCountries}
       />
-      <Countries countries={countries} pages={pages} />
+      {loadingError ? (
+        <div className="grid">
+          <p className="m-auto text-xl">Loading error. Try again.</p>
+        </div>
+      ) : loading ? (
+        <Loading />
+      ) : (
+        <Countries countries={countries} pages={pages} />
+      )}
     </>
   );
 };
