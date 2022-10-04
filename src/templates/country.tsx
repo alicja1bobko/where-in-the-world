@@ -3,7 +3,7 @@ export type Country = {
     common: string;
     nativeName: { [key: string]: { official: string; common: string } };
   };
-
+  borders: string[] | undefined;
   subregion: string;
   region: string;
   population: number;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Header from "./Header";
 import Form from "./Form";
 import Countries from "./Countries";
@@ -10,7 +10,7 @@ import Details from "./Details";
 
 const countriesDefaultState: Country[] = [];
 
-const MainApp = (props: any) => {
+const MainApp = (): ReactNode => {
   const PAGES = 24;
   const [pages, setPages] = useState(PAGES);
   const [allCountries, setAllCountries] = useState(countriesDefaultState);

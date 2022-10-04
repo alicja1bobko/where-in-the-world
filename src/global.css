@@ -95,6 +95,10 @@ select {
     opacity: 1;
 }
 
-.btn-back{
+.btn-navigate{
   background-color: var(--elements);
+}
+
+.details li{
+  padding-top: 1rem;
 }

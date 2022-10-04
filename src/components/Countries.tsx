@@ -22,8 +22,8 @@ const Countries: React.FC<CountriesProps> = ({ countries, pages }) => {
     <Link to={`/${country.name.common}`} key={country.cca3}>
       <div
         tabIndex={0}
-        className=" card grid rounded-md shadow-md max-w-sm mx-auto w-full max-h-[25rem] overflow-hidden cursor-pointer transition hover:!scale-105 hover:shadow-xl scale-75 opacity-40 transition-all"
-        key={country.name.common + index}
+        className=" card grid rounded-md shadow-md max-w-sm mx-auto w-full h-full overflow-hidden cursor-pointer transition hover:!scale-105 hover:shadow-xl scale-75 opacity-40 transition-all"
+        key={country.name.common}
       >
         <img
           className="object-cover w-full h-full max-h-[12rem]"
@@ -34,7 +34,8 @@ const Countries: React.FC<CountriesProps> = ({ countries, pages }) => {
           <h2 className="text-xl font-extrabold mb-2">{country.name.common}</h2>
           <ul>
             <li>
-              <b>Population:</b> {country.population}
+              <b>Population: </b>
+              {new Intl.NumberFormat("en-IN").format(country.population)}
             </li>
             <li>
               <b>Region:</b> {country.region}
