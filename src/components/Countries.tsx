@@ -17,6 +17,9 @@ const Countries: React.FC<CountriesProps> = ({ countries, pages }) => {
     },
     { threshold: 0.2 }
   );
+  console.log(
+    countries.filter((country) => country.name.common === "Antarctica")
+  );
 
   const cards = countries.slice(0, pages).map((country, index) => (
     <Link to={`/${country.name.common}`} key={country.cca3}>

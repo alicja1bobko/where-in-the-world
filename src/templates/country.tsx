@@ -1,7 +1,9 @@
 export type Country = {
   name: {
     common: string;
-    nativeName: { [key: string]: { official: string; common: string } };
+    nativeName:
+      | { [key: string]: { official: string; common: string } }
+      | undefined;
   };
   borders: string[] | undefined;
   subregion: string;

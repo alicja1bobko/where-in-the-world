@@ -14,15 +14,22 @@ const Details = ({ countries }: World): JSX.Element => {
 
   //currencies helper function
   const currencies: Array<string> = [];
-  const currenciesObject = Object.keys(country.currencies).map((key) =>
-    currencies.push(country.currencies[key].name)
-  );
-  //languages helper function
+  const currenciesObject =
+    country.currencies !== undefined
+      ? Object.keys(country.currencies).map((key) =>
+          currencies.push(country.currencies[key].name)
+        )
+      : null;
+  // //languages helper function
   const languages: Array<string> = [];
-  const languagesObject = Object.keys(country.languages).map((key) => {
-    languages.push(country.languages[key]);
-  });
-  //borders helper function
+  const languagesObject =
+    country.languages !== undefined
+      ? Object.keys(country.languages)?.map((key) =>
+          languages.push(country.languages[key])
+        )
+      : null;
+
+  // //borders helper function
   const borders: Array<string | null> = [];
   const bordersExtraction = country.borders?.map((border) =>
     countries.map((country) => {
@@ -57,14 +64,14 @@ const Details = ({ countries }: World): JSX.Element => {
               <ul className="details">
                 <li>
                   <b>Native Name: </b>
-                  {
-                    country.name.nativeName[
-                      Object.keys(country.name.nativeName)[0]
-                    ].common
-                  }
+                  {country.name.nativeName !== undefined
+                    ? country.name.nativeName?.[
+                        Object.keys(country.name.nativeName)[0]
+                      ].common
+                    : "-"}
                 </li>
                 <li>
-                  <b>Population:</b>{" "}
+                  <b>Population: </b>
                   {new Intl.NumberFormat("en-IN").format(country.population)}
                 </li>
                 <li>
@@ -81,26 +88,28 @@ const Details = ({ countries }: World): JSX.Element => {
                 </li>
                 <li>
                   <b>Currencies: </b>
-                  {currencies.join(", ")}
+                  {currencies.length !== 0 ? currencies.join(", ") : "-"}
                 </li>
                 <li>
                   <b>Languages: </b>
-                  {languages.join(", ")}
+                  {languages.length !== 0 ? languages.join(", ") : "-"}
                 </li>
               </ul>
             </div>
             <div className="pt-[3rem] text-lg">
               <b>Border countries: &nbsp;</b>
 
-              {borders.map((border) => {
-                return (
-                  <Link to={`/${border}`} key={border}>
-                    <button className="btn-navigate px-4 py-2 rounded-sm shadow-xl mr-3 mb-3 text-base">
-                      {border}
-                    </button>
-                  </Link>
-                );
-              })}
+              {borders.length !== 0
+                ? borders.map((border) => {
+                    return (
+                      <Link to={`/${border}`} key={border}>
+                        <button className="btn-navigate px-4 py-2 rounded-sm shadow-xl mr-3 mb-3 text-base">
+                          {border}
+                        </button>
+                      </Link>
+                    );
+                  })
+                : "-"}
             </div>
           </section>
         </div>
