@@ -42,7 +42,9 @@ const Countries: React.FC<CountriesProps> = ({ countries, pages }) => {
           <ul>
             <li>
               <b>Population: </b>
-              {new Intl.NumberFormat("en-IN").format(country.population)}
+              {new Intl.NumberFormat("de-DE", { useGrouping: true }).format(
+                country.population
+              )}
             </li>
             <li>
               <b>Region:</b> {country.region}
