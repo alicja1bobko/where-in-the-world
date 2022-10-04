@@ -1,4 +1,4 @@
-# Frontend Mentor - REST Countries API with color theme switcher solution
+# Where in the World?
 
 This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
@@ -13,7 +13,7 @@ Users should be able to:
 - Filter countries by region
 - Click on a country to see more detailed information on a separate page
 - Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode 
+- Toggle the color scheme between light and dark mode
 
 Additional features:
 
@@ -25,8 +25,26 @@ Additional features:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
+<table>
+        <tr>
+		    <td>
+                <img src="./src/assets/1.png"
+                    alt="Desktop solution" width="100%" title="desktop solution"  />
+            </td>
+			<td>
+                 <img src="./src/assets/2.png"
+                    alt="Mobile solution" width="100%" title="Mobile solution"/>
+            </td>
+            <td>
+               <img src="./src/assets/4.png"
+                    alt="Desktop details solution" width="100%" title="Desktop details solution"/>
+            </td>
+                   <td>
+               <img src="./src/assets/3.png"
+                    alt="Mobile details solution" width="100%" title="Mobile details solution"/>
+            </td>
+        </tr>
+</table>
 
 ### Links
 
