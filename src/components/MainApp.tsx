@@ -8,7 +8,7 @@ import Details from "./Details";
 
 const countriesDefaultState: Country[] = [];
 
-const MainApp = (): ReactNode => {
+const MainApp = (): JSX.Element => {
   const PAGES = 24;
   const [pages, setPages] = useState(PAGES);
   const [allCountries, setAllCountries] = useState(countriesDefaultState);
@@ -58,7 +58,7 @@ const MainApp = (): ReactNode => {
         <main>
           <Routes>
             <Route
-              path="/"
+              path="/where-in-the-world"
               element={
                 <Home
                   loading={loading}

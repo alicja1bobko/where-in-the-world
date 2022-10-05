@@ -19,7 +19,7 @@ const Header = () => {
         "z-10 shadow-md p-8 px-[2rem] md:px-[4rem] transition-colors items-center sticky"
       }
     >
-      <Link to={`/`}>
+      <Link to={`/where-in-the-world`}>
         <h1 className="text-xl sm:text-2xl xl:text-[24px] tracking-[1px] font-extrabold w-[8rem] sm:w-auto">
           Where in the World?
         </h1>
